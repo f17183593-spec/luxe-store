@@ -1,0 +1,6 @@
+{
+  "Header": { "collection": "系列", "cart": "购物车" },
+  "Footer": { "rights": "保留所有权利。" },
+  "Cart": { "title": "购物车" },
+  "Checkout": { "title": "结账" }
+}

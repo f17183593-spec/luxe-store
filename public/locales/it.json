@@ -1,0 +1,6 @@
+{
+  "Header": { "collection": "Collezione", "cart": "Carrello" },
+  "Footer": { "rights": "Tutti i diritti riservati." },
+  "Cart": { "title": "Carrello" },
+  "Checkout": { "title": "Pagamento" }
+}

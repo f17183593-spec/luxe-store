@@ -1,0 +1,6 @@
+{
+  "Header": { "collection": "المجموعة", "cart": "السلة" },
+  "Footer": { "rights": "جميع الحقوق محفوظة." },
+  "Cart": { "title": "سلة التسوق" },
+  "Checkout": { "title": "الدفع" }
+}

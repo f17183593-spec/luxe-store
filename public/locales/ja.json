@@ -1,0 +1,6 @@
+{
+  "Header": { "collection": "コレクション", "cart": "カート" },
+  "Footer": { "rights": "無断転載を禁じます。" },
+  "Cart": { "title": "ショッピングカート" },
+  "Checkout": { "title": "チェックアウト" }
+}
