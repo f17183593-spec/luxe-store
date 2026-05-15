@@ -1,5 +1,13 @@
 import { useState, useCallback } from "react";
-import type { CartItem } from "@/types/cart";
+
+export interface CartItem {
+  _id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image?: string;
+  [key: string]: any;
+}
 
 export interface Cart {
   items: CartItem[];
@@ -10,17 +18,18 @@ export interface Cart {
 export function useCart() {
   const [cart, setCart] = useState<Cart>({ items: [], totalItems: 0, totalPrice: 0 });
 
-  const addItem = useCallback((item: CartItem) => {
+  const addItem = useCallback((item: any) => {
     setCart((prev) => {
-      const existingItem = prev.items.find((i) => i.id === item.id);
+      const itemId = item._id || item.id;
+      const existingItem = prev.items.find((i) => i._id === itemId);
       let newItems;
 
       if (existingItem) {
         newItems = prev.items.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          i._id === itemId ? { ...i, quantity: i.quantity + 1 } : i
         );
       } else {
-        newItems = [...prev.items, { ...item, quantity: 1 }];
+        newItems = [...prev.items, { ...item, _id: itemId, quantity: 1 }];
       }
 
       return {
@@ -33,7 +42,7 @@ export function useCart() {
 
   const removeItem = useCallback((id: string) => {
     setCart((prev) => {
-      const newItems = prev.items.filter((i) => i.id !== id);
+      const newItems = prev.items.filter((i) => i._id !== id);
       return {
         items: newItems,
         totalItems: newItems.reduce((acc, i) => acc + i.quantity, 0),
@@ -45,7 +54,7 @@ export function useCart() {
   const updateQuantity = useCallback((id: string, qty: number) => {
     setCart((prev) => {
       const newItems = prev.items.map((i) =>
-        i.id === id ? { ...i, quantity: Math.max(0, qty) } : i
+        i._id === id ? { ...i, quantity: Math.max(0, qty) } : i
       ).filter(i => i.quantity > 0);
 
       return {
