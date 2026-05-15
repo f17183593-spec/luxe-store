@@ -69,7 +69,7 @@ async function BentoGridWrapper() {
 
   return (
     <BentoGrid
-      products={data?.featured ?? null}
+      products={data?.featured ?? []}
       locale={locale}
     />
   );
