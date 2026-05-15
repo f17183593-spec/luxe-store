@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 
 const DRAWER_WIDTH = 420;
 
-const overlayVariants = {
+const overlayVariants: any = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-const drawerVariants = {
+const drawerVariants: any = {
   hidden: { x: DRAWER_WIDTH, opacity: 0 },
   visible: {
     x: 0,
