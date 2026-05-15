@@ -26,7 +26,7 @@ const drawerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: any = {
   hidden: { opacity: 0, x: 20, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -54,7 +54,7 @@ function CartItemRow({
   return (
     <motion.div
       layout
-      any={itemVariants}
+      variants={itemVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
