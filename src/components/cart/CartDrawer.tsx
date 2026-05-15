@@ -47,7 +47,7 @@ function CartItemRow({
   onUpdateQuantity,
   onRemove,
 }: {
-  item: ReturnType<ReturnType<typeof useCartStore>["items"]>[number];
+  item: any;
   onUpdateQuantity: (id: string, qty: number) => void;
   onRemove: (id: string) => void;
 }) {
