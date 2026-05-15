@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { Cart, CartItem } from "@/types/cart";
+import type { CartItem } from "@/types/cart";
 
 export function useCart() {
   const [cart, setCart] = useState<Cart>({ items: [], totalItems: 0, totalPrice: 0 });
