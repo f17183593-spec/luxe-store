@@ -1,77 +1,51 @@
-"use client";
-
-import type { ReactNode, ButtonHTMLAttributes } from "react";
 import { forwardRef } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "outline" | "ghost" | "gold";
-type ButtonSize = "sm" | "md" | "lg";
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  className?: string;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline" | "ghost" | "link";
+  size?: "default" | "sm" | "lg" | "icon";
   loading?: boolean;
 }
 
-const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-luxe-black text-white hover:bg-luxe-charcoal disabled:opacity-40",
-  outline:
-    "border border-luxe-black/20 text-luxe-black hover:bg-luxe-black/5",
-  ghost: "text-luxe-charcoal/60 hover:text-luxe-black",
-  gold:
-    "bg-luxe-gold text-luxe-black hover:bg-luxe-gold-light disabled:opacity-40",
+const variantStyles = {
+  default: "bg-black text-white hover:bg-black/90",
+  outline: "border border-zinc-200 bg-white hover:bg-zinc-100 text-zinc-900",
+  ghost: "hover:bg-zinc-100 text-zinc-900",
+  link: "text-zinc-900 underline-offset-4 hover:underline",
 };
 
-const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-5 py-2 text-xs",
-  md: "px-8 py-3 text-sm",
-  lg: "px-12 py-4 text-base",
+const sizeStyles = {
+  default: "h-10 px-4 py-2",
+  sm: "h-9 rounded-md px-3",
+  lg: "h-11 rounded-md px-8",
+  icon: "h-10 w-10",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      children,
-      variant = "primary",
-      size = "md",
-      className,
-      loading,
-      disabled,
-      ...props
-    },
-    ref,
-  ) => {
-    // @ts-ignore
+  ({ className, variant = "default", size = "default", loading, disabled, children, ...props }, ref) => {
     return (
-    <motion.button
-      ref={ref}
+      <motion.button
+        ref={ref}
         whileHover={!disabled && !loading ? { scale: 1.02 } : undefined}
         whileTap={!disabled && !loading ? { scale: 0.98 } : undefined}
         disabled={disabled || loading}
         className={cn(
-          "inline-flex items-center justify-center rounded-full font-sans tracking-[0.15em] uppercase transition-all duration-300",
+          "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50",
           variantStyles[variant],
           sizeStyles[size],
           loading && "cursor-wait",
-          className,
+          className
         )}
-        {...(props as any)}
+        {...props}
       >
         {loading ? (
-          <span className="flex items-center gap-2">
-            <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-            <span>{children}</span>
-          </span>
-        ) : (
-          children
-        )}
+          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-zinc-500 border-t-zinc-900" />
+        ) : null}
+        {children}
       </motion.button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";
