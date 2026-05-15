@@ -28,7 +28,7 @@ export function AddToCartButton({
 }: AddToCartButtonProps) {
   const [showFeedback, setShowFeedback] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
-  const openDrawer = useCartStore((s) => s.openDrawer);
+  const openDrawer = useCartStore((s) => s.toggleDrawer);
 
   const handleClick = useCallback(() => {
     addItem({ productId, slug, title, price, image, category });
