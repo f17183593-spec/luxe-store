@@ -53,12 +53,12 @@ async function HeroSectionWrapper() {
 
   return (
     <HeroSection
-      title={data.title}
-      subtitle={data.subtitle}
-      backgroundImage={data.backgroundImage}
-      backgroundAlt={data.backgroundAlt}
-      ctaLabel={data.ctaLabel}
-      ctaLink={data.ctaLink}
+      title={data.hero.title}
+      subtitle={data.hero.subtitle}
+      backgroundImage={data.hero.backgroundImage}
+      backgroundAlt={data.hero.backgroundAlt}
+      ctaLabel={data.hero.ctaLabel}
+      ctaLink={data.hero.ctaLink}
     />
   );
 }
