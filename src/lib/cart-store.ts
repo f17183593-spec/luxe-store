@@ -18,7 +18,7 @@ export interface CartState {
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   toggleDrawer: () => void;
-  clearCart: () => void; // ضفناها هنا
+  clearCart: () => void;
 }
 
 export const useCartStore = create<CartState>()(
@@ -72,7 +72,7 @@ export const useCartStore = create<CartState>()(
         set((state: any) => ({ isDrawerOpen: !state.isDrawerOpen }));
       },
 
-      clearCart: () => { // وضفنا وظيفتها هنا عشان تصفر السلة
+      clearCart: () => {
         set(() => ({ items: [], lastAddedItem: null }));
       },
     }),
