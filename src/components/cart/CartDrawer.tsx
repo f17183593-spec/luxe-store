@@ -54,7 +54,7 @@ function CartItemRow({
   return (
     <motion.div
       layout
-      variants={itemVariants}
+      any={itemVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
