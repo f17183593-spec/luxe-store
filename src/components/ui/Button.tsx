@@ -45,9 +45,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    // @ts-ignore
     return (
-      <motion.button
-        ref={ref}
+    <motion.button
+      ref={ref}
         whileHover={!disabled && !loading ? { scale: 1.02 } : undefined}
         whileTap={!disabled && !loading ? { scale: 0.98 } : undefined}
         disabled={disabled || loading}
@@ -58,7 +59,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           loading && "cursor-wait",
           className,
         )}
-        {...props}
+        {...(props as any)}
       >
         {loading ? (
           <span className="flex items-center gap-2">
