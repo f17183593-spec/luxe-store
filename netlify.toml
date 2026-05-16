@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/next"
+  status = 200
+
+[build]
+  command = "npm run build"
+  publish = ".next"
