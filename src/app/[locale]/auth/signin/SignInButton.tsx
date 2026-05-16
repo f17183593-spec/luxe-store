@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 export function SignInButton() {
   return (
     <Button
-      variant="gold"
+     variant="default"
       size="lg"
       className="w-full"
       onClick={() => signIn("google", { redirectTo: "/" })}
