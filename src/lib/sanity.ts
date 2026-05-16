@@ -20,7 +20,5 @@ export function urlForSource(source: any) {
 }
 
 export async function sanityFetch<T = any>(query: string, params: Record<string, any> = {}) {
-  return client.fetch<T>(query, params, {
-    next: { revalidate: 60 },
-  });
+  return client.fetch<T>(query, params);
 }
