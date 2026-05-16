@@ -50,7 +50,7 @@ export default async function CheckoutSuccessPage({
 
       <div className="mt-10 flex justify-center gap-4">
         <a href={`/${locale}`}>
-          <Button variant="primary" size="lg">
+          <Button variant="default" size="lg">
             Continue Shopping
           </Button>
         </a>
