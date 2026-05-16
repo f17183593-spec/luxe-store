@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost" | "link";
+ variant?: "default" | "outline" | "ghost" | "link" | "gold";
   size?: "default" | "sm" | "lg" | "icon";
   loading?: boolean;
 }
@@ -13,6 +13,7 @@ const variantStyles = {
   outline: "border border-zinc-200 bg-white hover:bg-zinc-100 text-zinc-900",
   ghost: "hover:bg-zinc-100 text-zinc-900",
   link: "text-zinc-900 underline-offset-4 hover:underline",
+  gold: "bg-luxe-gold text-luxe-black hover:bg-luxe-gold/90",
 };
 
 const sizeStyles = {
