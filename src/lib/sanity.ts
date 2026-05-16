@@ -10,7 +10,6 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-// هنا أصلحنا مشكلة الـ Type وخليناه يقبل الصورة بشكل آمن وسريع
 export function urlForSource(source: any) {
   if (!builder || !source) return "";
   try {
@@ -18,4 +17,10 @@ export function urlForSource(source: any) {
   } catch {
     return "";
   }
+}
+
+export async function sanityFetch<T = any>(query: string, params: Record<string, any> = {}) {
+  return client.fetch<T>(query, params, {
+    next: { revalidate: 60 },
+  });
 }
