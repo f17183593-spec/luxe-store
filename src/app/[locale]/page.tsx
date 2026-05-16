@@ -28,7 +28,7 @@ function BentoFallback() {
           className={cn(
             "aspect-[4/5] rounded-2xl",
             i === 0 && "md:col-span-2 md:row-span-2",
-            (i === 1 || i === 3) && "md:col-span-2",
+            (i === 1 || i === 3) && "md:col-span-2"
           )}
         />
       ))}
@@ -37,35 +37,33 @@ function BentoFallback() {
 }
 
 async function HeroSectionWrapper() {
-  const data = await sanityFetch<{ hero: NonNullable<HomeData["hero"]> }>(
+  const data = await sanityFetch<any>(
     `*[_type == "hero"][0] {
       title, subtitle, ctaLabel, ctaLink,
       "backgroundImage": backgroundImage.asset->url,
       "backgroundAlt": backgroundImage.alt
-    }`,
+    }`
   );
 
   if (!data) {
-    return (
-      <HeroSection />
-    );
+    return <HeroSection />;
   }
 
   return (
     <HeroSection
-      title={data.hero.title}
-      subtitle={data.hero.subtitle}
-      backgroundImage={data.hero.backgroundImage}
-      backgroundAlt={data.hero.backgroundAlt}
-      ctaLabel={data.hero.ctaLabel}
-      ctaLink={data.hero.ctaLink}
+      title={data.title || ""}
+      subtitle={data.subtitle || ""}
+      backgroundImage={data.backgroundImage || ""}
+      backgroundAlt={data.backgroundAlt || ""}
+      ctaLabel={data.ctaLabel || ""}
+      ctaLink={data.ctaLink || ""}
     />
   );
 }
 
 async function BentoGridWrapper() {
   const locale = await getLocale();
-  const data = await sanityFetch<HomeData>(HOME_PAGE_QUERY, {}, { next: { revalidate: 60 } });
+  const data = await sanityFetch<HomeData>(HOME_PAGE_QUERY);
 
   return (
     <BentoGrid
