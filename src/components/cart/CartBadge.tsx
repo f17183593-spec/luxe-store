@@ -10,7 +10,7 @@ interface CartBadgeProps {
 
 export function CartBadge({ className }: CartBadgeProps) {
   const items = useCartStore((s) => s.items);
-  const openDrawer = useCartStore((s) => s.openDrawer);
+  const openDrawer = useCartStore((s) => s.toggleDrawer);
   const count = items.reduce((sum, i) => sum + i.quantity, 0);
 
   return (
