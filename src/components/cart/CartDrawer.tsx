@@ -125,7 +125,7 @@ function CartItemRow({
 export function CartDrawer() {
   const items = useCartStore((s) => s.items);
   const isOpen = useCartStore((s) => s.isDrawerOpen);
-  const closeDrawer = useCartStore((s) => s.closeDrawer);
+ const closeDrawer = useCartStore((s) => s.toggleDrawer);
   const removeItem = useCartStore((s) => s.removeItem);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
 
